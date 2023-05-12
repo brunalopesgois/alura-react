@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import style from './Button.module.scss';
 
 class Button extends React.Component {
   render() {
-    return <button>Botão</button>
+    return <button className={style.customButton}>Botão</button>;
   }
 }
 
-export default Button
+export default Button;
