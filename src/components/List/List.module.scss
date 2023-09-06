@@ -25,27 +25,4 @@
       max-height: 500px;
     }
   }
-
-  .selectedItem {
-    background-color: #292929;
-    box-shadow: 2px 4px 4px #0000009f inset;
-  }
-
-  .completedItem {
-    background-color: #566f42;
-    cursor: auto;
-
-    .finished {
-      display: block;
-      background-image: url('../../assets/img/check-mark.svg');
-      background-repeat: no-repeat;
-      background-size: 38px 38px;
-      position: absolute;
-      top: 50%;
-      right: 12px;
-      transform: translateY(-50%);
-      width: 42px;
-      height: 43px;
-    }
-  }
 }
