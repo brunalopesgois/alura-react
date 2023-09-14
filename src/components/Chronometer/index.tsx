@@ -7,9 +7,10 @@ import { timeToSeconds } from '../../common/utils/time';
 
 interface IProps {
   selected: ITask | undefined;
+  finishTask: () => void;
 }
 
-export default function Chronometer({ selected }: IProps) {
+export default function Chronometer({ selected, finishTask }: IProps) {
   const [time, setTime] = useState<number>();
 
   useEffect(() => {
@@ -18,13 +19,23 @@ export default function Chronometer({ selected }: IProps) {
     }
   }, [selected]);
 
+  function regressive(timer = 0) {
+    setTimeout(() => {
+      if (timer > 0) {
+        setTime(timer - 1);
+        return regressive(timer - 1);
+      }
+      finishTask();
+    }, 1000);
+  }
+
   return (
     <div className={style.chronometer}>
       <p className={style.title}>Escolha um card e inicie o cronômetro</p>
       <div className={style.timerWrapper}>
         <Timer time={time} />
       </div>
-      <Button>Começar!</Button>
+      <Button onClick={() => regressive(time)}>Começar!</Button>
     </div>
   );
 }
